@@ -12,7 +12,8 @@ Architecture:
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a6a7420d-4bf0-4533-bcde-7a5d6945b3fe)
 
 Installation et configuration:
-
+ 
+ 
 
 
 
