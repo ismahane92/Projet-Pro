@@ -69,7 +69,28 @@ Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/874b5a05-4b88-4605-b114-a50706f500a8)
  
+ Création du playbook:
+ Avant la création du playbook, on créé un répertoire appelé "project" sur lequel on crée le fichier du playbook ainsi que le fichier sur lequel on va définir le groupe d'hôtes. Ce fichier est utilisé comme inventaire Ansible pour spécifier les hôtes cibles et les groupes d'hôtes.
  
+ Pour créer le répertoire "project", on tape la commande suivante:
+ 
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/7a1223e7-27b4-418c-9d0f-781ff7e786d4)
+ 
+ Ensuite, on crée le fichier appelé "hosts" dans le même répertoire:
+ 
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/3e182454-518a-499f-b536-6720b2b1f51f)
+
+Dans ce fichier, on définit l'adresse IP de l'hôte cible, ici 192.168.10.133:
+
+
+
+Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on peut taper cette commande: ansible -i ./hosts all -m ping -u ansible
+
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef7b7a27-7164-47c8-ae25-83412b7a32da)
+
+
+à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
+
 
 
  
