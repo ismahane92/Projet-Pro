@@ -8,6 +8,7 @@ Ansible est un outil d'automatisation open source largement utilisé pour la ges
 Un playbook Ansible est un fichier YAML qui définit une série de tâches à effectuer sur des nœuds cibles. Ces tâches peuvent inclure des actions telles que la configuration de paramètres de sécurité, l'installation de correctifs, la vérification de la conformité des configurations, la gestion des autorisations, etc.
 
 Architecture:
+
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a6a7420d-4bf0-4533-bcde-7a5d6945b3fe)
 
 Installation et configuration:
