@@ -2,7 +2,7 @@ Projet Pro
 
 Dans le cadre d'une automatisation de tâches en tant que Analyste en sécurité informatique, j'ai pu réalisé ce projet dont l'objectif principal est de rechercher et collecter des informations spécifiques pour automatiser des actions de sécurité. 
 
-Pour cela, j'ai mis en place l'outil Ansible installé sur une machine Kali ainsi qu'un hôte client Ubuntu afin de réaliser des tests.
+Pour cela, j'ai mis en place l'outil Ansible installé sur une machine Kali ainsi qu'un hôte cible Ubuntu afin de réaliser des tests.
 
 Ansible est un outil d'automatisation open source largement utilisé pour la gestion de configuration, le déploiement d'applications et l'orchestration de systèmes. Il offre également des fonctionnalités pour la sécurisation des systèmes à l'aide de playbooks de sécurité.
 
@@ -13,24 +13,12 @@ Architecture:
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a6a7420d-4bf0-4533-bcde-7a5d6945b3fe)
 
 Installation:
- Ansible (Management Node) sera installé sur une machine KALI comme indiqué ci-dessus. 
+ Ansible (Management Node) sera installé sur une machine Kali comme indiqué ci-dessus. 
  Commande pour installer Ansible: sudo apt install ansible 
  Commande pour vérifier la version de ansible: ansible --version
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef9039fd-2549-4bb2-9734-948e7ebc91fc)
  
- Création du projet:
- Sur la machine Kali, on va créer un dossier appelé "Project" sur lequel on va créer notre playbook ainsi qu'un fichier appelé "hosts" pour définir les groupes d'hôtes qu'on souhaite cibler. 
- On va utiliser la commande: mkdir Project.
- 
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/bc7d425c-74cc-42cc-83ae-1e30221f747e)
-
-Ensuite, on crée le fichier "hosts" dans le dossier "Project" en utilisant la commande suivante: sudo nano hosts
-
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2c9ea1cf-0481-4a2a-a8d1-3eb25c47acc3)
-
-
-
  
 Configuration de Kali:
  génération de clé SSH:
@@ -70,6 +58,7 @@ Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/874b5a05-4b88-4605-b114-a50706f500a8)
  
  Création du playbook:
+ 
  Avant la création du playbook, on créé un répertoire appelé "project" sur lequel on crée le fichier du playbook ainsi que le fichier sur lequel on va définir le groupe d'hôtes. Ce fichier est utilisé comme inventaire Ansible pour spécifier les hôtes cibles et les groupes d'hôtes.
  
  Pour créer le répertoire "project", on tape la commande suivante:
