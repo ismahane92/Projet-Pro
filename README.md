@@ -19,6 +19,19 @@ Installation:
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef9039fd-2549-4bb2-9734-948e7ebc91fc)
  
+ Création du projet:
+ Sur la machine Kali, on va créer un dossier appelé "Project" sur lequel on va créer notre playbook ainsi qu'un fichier appelé "hosts" pour définir les groupes d'hôtes qu'on souhaite cibler. 
+ On va utiliser la commande: mkdir Project.
+ 
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/bc7d425c-74cc-42cc-83ae-1e30221f747e)
+
+Ensuite, on crée le fichier "hosts" dans le dossier "Project" en utilisant la commande suivante: sudo nano hosts
+
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2c9ea1cf-0481-4a2a-a8d1-3eb25c47acc3)
+
+
+
+ 
 Configuration de Kali:
  génération de clé SSH:
  Générer une clé SSH pour la configuration d'Ansible est nécessaire pour établir une connexion sécurisée entre le contrôleur Ansible (machine d'où les commandes Ansible 
