@@ -87,7 +87,8 @@ Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur 
 Configuration
 
 Le script utilise Ansible pour gérer la configuration et l'exécution des tâches. La section "hosts" spécifie l'hôte cible sur lequel les scans seront effectués. La propriété "become" est définie sur "true" pour exécuter les tâches en tant que superutilisateur (root) afin d'accéder aux ressources système nécessaires.
-Tâches
+
+#### Tâches
 
     Ajout de la clé GPG du référentiel Metasploit : Cette tâche ajoute la clé GPG du référentiel Metasploit au système pour permettre la vérification des paquets provenant de ce référentiel.
 
