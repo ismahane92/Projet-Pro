@@ -79,7 +79,8 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 
 
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
-Le code de ce fichier est présent sur le fichier "playbook.md"
+
+Le code de ce fichier est présent sur le fichier "playbook.yml"
 
 ### Scan de vulnérabilités
 
@@ -146,6 +147,8 @@ Pour utiliser ce script, vous devez disposer d'Ansible installé sur votre machi
 Assurez-vous d'adapter les adresses IP et les chemins des fichiers de sortie selon vos besoins.
 
 Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) sur l'hôte cible, car il effectue des opérations système et accède à des journaux système sensibles.
+
+
 
 
 
