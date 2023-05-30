@@ -12,7 +12,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a6a7420d-4bf0-4533-bcde-7a5d6945b3fe)
 
-### Installation:
+## Installation:
  Ansible (Management Node) sera installé sur une machine Kali comme indiqué ci-dessus. 
  Commande pour installer Ansible: sudo apt install ansible 
  Commande pour vérifier la version de ansible: ansible --version
@@ -20,7 +20,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef9039fd-2549-4bb2-9734-948e7ebc91fc)
  
  
-Configuration de Kali:
+## Configuration de Kali:
  génération de clé SSH:
  Générer une clé SSH pour la configuration d'Ansible est nécessaire pour établir une connexion sécurisée entre le contrôleur Ansible (machine d'où les commandes Ansible 
  sont exécutées) et les hôtes clients (machines sur lesquelles les actions automatisées seront effectuées).
@@ -33,7 +33,7 @@ Configuration de Kali:
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/9f23f1da-3683-4f34-89b9-97fe9db8e908)
  
  
-Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
+## Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
 
  L'hôte qu'on souhaite configurer pour l'automatisation Ansible doit avoir le package de serveur SSH préinstallé.
  Tout d'abord, il faut installer le serveur OpenSSH s'il n'est pas déjà installé avec la commande suivante: sudo apt install openssh-server -y
@@ -57,7 +57,7 @@ Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/874b5a05-4b88-4605-b114-a50706f500a8)
  
- Création du playbook:
+ ## Création du playbook:
  
  Avant la création du playbook, on créé un répertoire appelé "project" sur lequel on crée le fichier du playbook ainsi que le fichier sur lequel on va définir le groupe d'hôtes. Ce fichier est utilisé comme inventaire Ansible pour spécifier les hôtes cibles et les groupes d'hôtes.
  
@@ -81,7 +81,7 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
 Le code de ce fichier est présent sur le fichier "playbook.md"
 
-# Scan de vulnérabilités
+### Scan de vulnérabilités
 
 Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
 Configuration
