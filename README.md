@@ -10,7 +10,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
 ## Architecture:
 
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a6a7420d-4bf0-4533-bcde-7a5d6945b3fe)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/84085634-77e3-40d2-8d79-a9dfe7f4c904)
 
 ## Installation:
  Ansible (Management Node) sera installé sur une machine Kali comme indiqué ci-dessus. 
@@ -71,6 +71,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
 Dans ce fichier, on définit l'adresse IP de l'hôte cible, ici 192.168.10.133:
 
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/65e768d3-5a28-47e2-abc1-fbc94a5e07b2)
 
 
 Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on peut taper cette commande: ansible -i ./hosts all -m ping -u ansible
