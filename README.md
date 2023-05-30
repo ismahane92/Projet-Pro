@@ -81,7 +81,7 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
 Le code de ce fichier est présent sur le fichier "playbook.md"
 
-Scan de vulnérabilités
+#Scan de vulnérabilités
 
 Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
 Configuration
