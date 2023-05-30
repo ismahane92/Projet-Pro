@@ -148,6 +148,9 @@ Assurez-vous d'adapter les adresses IP et les chemins des fichiers de sortie sel
 
 Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) sur l'hôte cible, car il effectue des opérations système et accède à des journaux système sensibles.
 
+### Résultat de test du playbook:
+
+
 
 
 
