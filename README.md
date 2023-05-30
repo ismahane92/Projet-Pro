@@ -91,19 +91,26 @@ Le script utilise Ansible pour gérer la configuration et l'exécution des tâch
 
 #### Tâches
 
-Ajout de la clé GPG du référentiel Metasploit : Cette tâche ajoute la clé GPG du référentiel Metasploit au système pour permettre la vérification des paquets provenant de ce référentiel.
+##### Ajout de la clé GPG du référentiel Metasploit : 
+Cette tâche ajoute la clé GPG du référentiel Metasploit au système pour permettre la vérification des paquets provenant de ce référentiel.
 
-Ajout du référentiel Metasploit : Cette tâche ajoute le référentiel Metasploit à la liste des sources de paquets du système. Il spécifie le lien vers le référentiel et son état "présent" pour s'assurer qu'il est activé.
+##### Ajout du référentiel Metasploit :
+Cette tâche ajoute le référentiel Metasploit à la liste des sources de paquets du système. Il spécifie le lien vers le référentiel et son état "présent" pour s'assurer qu'il est activé.
 
-Mise à jour de la liste des paquets disponibles : Cette tâche met à jour la liste des paquets disponibles sur l'hôte en exécutant la commande "apt update" pour récupérer les dernières informations des paquets depuis les référentiels.
+##### Mise à jour de la liste des paquets disponibles :
+Cette tâche met à jour la liste des paquets disponibles sur l'hôte en exécutant la commande "apt update" pour récupérer les dernières informations des paquets depuis les référentiels.
 
-Installation des outils de sécurité courants : Cette tâche utilise le module "apt" pour installer plusieurs outils de sécurité, notamment Nmap, Nikto, Metasploit Framework, Wireshark et Tshark, sur l'hôte cible.
+##### Installation des outils de sécurité courants :
+Cette tâche utilise le module "apt" pour installer plusieurs outils de sécurité, notamment Nmap, Nikto, Metasploit Framework, Wireshark et Tshark, sur l'hôte cible.
 
-Exécution d'un test de vulnérabilité avec Nmap : Cette tâche exécute la commande shell "nmap" avec des options spécifiques pour effectuer un test de vulnérabilité sur l'hôte cible. Les résultats du test sont enregistrés dans le fichier "rapport_scan_nmap.txt".
+##### Exécution d'un test de vulnérabilité avec Nmap :
+Cette tâche exécute la commande shell "nmap" avec des options spécifiques pour effectuer un test de vulnérabilité sur l'hôte cible. Les résultats du test sont enregistrés dans le fichier "rapport_scan_nmap.txt".
 
-Recherche des mots de passe incorrects dans le journal d'authentification : Cette tâche utilise la commande shell "grep" pour rechercher les lignes contenant le motif "authentication failure" dans le fichier de journal d'authentification "/var/log/auth.log". Les résultats sont enregistrés dans le fichier "auth_failures.log".
+##### Recherche des mots de passe incorrects dans le journal d'authentification :
+Cette tâche utilise la commande shell "grep" pour rechercher les lignes contenant le motif "authentication failure" dans le fichier de journal d'authentification "/var/log/auth.log". Les résultats sont enregistrés dans le fichier "auth_failures.log".
 
-Récupération des événements d'échec d'authentification : Cette tâche utilise le module "fetch" pour récupérer le fichier "auth_failures.log" depuis l'hôte distant vers le répertoire local.
+##### Récupération des événements d'échec d'authentification :
+Cette tâche utilise le module "fetch" pour récupérer le fichier "auth_failures.log" depuis l'hôte distant vers le répertoire local.
 
 Scan de vulnérabilité des applications web avec Nikto : Cette tâche exécute la commande shell "nikto" avec des options spécifiques pour effectuer un scan de vulnérabilité des applications web sur l'adresse IP spécifiée. Les résultats du scan sont enregistrés dans le fichier "rapport_scan_nikto.txt".
 
