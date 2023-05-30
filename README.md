@@ -151,40 +151,36 @@ Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) 
 
 ### Résultat de test du playbook:
 
+Nmap:
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/b19b7ac1-0f84-4b95-aded-416e6112fd29)
 
+ L'hôte "ismahane" (192.168.10.133) est en ligne avec une latence très faible.
+ Il y a 998 ports fermés qui n'ont pas été inclus dans le rapport.
+ Les ports 22 (SSH) et 80 (HTTP) sont ouverts.
+ Le service SSH utilise OpenSSH 8.9p1 sur Ubuntu Linux.
+ Le service HTTP utilise nginx 1.18.0 sur Ubuntu.
+ Le serveur Web prend en charge les méthodes GET et HEAD.
+ Le titre de la page d'accueil est "Welcome to nginx!".
+ Le système d'exploitation est Linux 2.6.X avec le noyau Linux 2.6.32.
+ L'estimation de l'uptime est d'environ 43,501 jours.
+ L'hôte est sur le même réseau (0 sauts de réseau).
+ La prédiction des numéros de séquence TCP est considérée comme difficile (Difficulté=248).
 
 
 
 
-
+Nikto:
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6b90031d-a2ed-4806-ba09-a1c8af183a4b)
 
- Nikto v2.1.5 : Cela indique la version de Nikto utilisée pour le scan.
-
- Target IP : L'adresse IP du serveur cible qui a été scannée.
-
- Target Hostname : Le nom d'hôte du serveur cible qui a été scannée.
-
- Target Port : Le port sur lequel le scan a été effectué, dans ce cas, le port 80 généralement utilisé pour les connexions HTTP.
-
- Using Encoding : Cela indique la méthode d'encodage utilisée par Nikto lors de la requête vers le serveur. Dans ce cas, l'encodage prématuré de l'URL est utilisé.
-
- Start Time : L'heure de début du scan.
-
- Server : Cela indique le serveur web qui est en cours d'exécution sur le serveur cible. Dans ce cas, le serveur est "nginx/1.18.0 (Ubuntu)".
-
- Server leaks inodes via ETags : Cette ligne indique une vulnérabilité potentielle où le serveur divulgue des informations sensibles (inodes) à travers les ETags.       Les ETags sont des identifiants uniques associés aux fichiers sur le serveur.
-
- The anti-clickjacking X-Frame-Options header is not present : Cela signifie que l'en-tête de sécurité X-Frame-Options, qui aide à prévenir les attaques de       
- clickjacking, n'est pas présent sur le serveur.
-
-  6544 items checked: 0 error(s) and 2 item(s) reported on remote host : Cela indique que Nikto a vérifié un total de 6544 éléments sur le serveur cible et a trouvé 
-  2 problèmes.
-
-  End Time : L'heure de fin du scan.
+ IP cible : 192.168.10.133
+ Nom d'hôte cible : 192.168.10.133
+ Port cible : 80
+ Serveur : nginx/1.18.0 (Ubuntu)
+ Vulnérabilités identifiées : Fuites d'inodes via ETags, absence de l'en-tête X-Frame-Options anti-clickjacking
+ 2 problèmes signalés sur 6544 éléments vérifiés
+ Durée du scan : 132 secondes
     
     
     
