@@ -81,6 +81,54 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
 Le code de ce fichier est présent sur le fichier "playbook.md"
 
+Scan de vulnérabilités
+
+Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
+Configuration
+
+Le script utilise Ansible pour gérer la configuration et l'exécution des tâches. La section "hosts" spécifie l'hôte cible sur lequel les scans seront effectués. La propriété "become" est définie sur "true" pour exécuter les tâches en tant que superutilisateur (root) afin d'accéder aux ressources système nécessaires.
+Tâches
+
+    Ajout de la clé GPG du référentiel Metasploit : Cette tâche ajoute la clé GPG du référentiel Metasploit au système pour permettre la vérification des paquets provenant de ce référentiel.
+
+    Ajout du référentiel Metasploit : Cette tâche ajoute le référentiel Metasploit à la liste des sources de paquets du système. Il spécifie le lien vers le référentiel et son état "présent" pour s'assurer qu'il est activé.
+
+    Mise à jour de la liste des paquets disponibles : Cette tâche met à jour la liste des paquets disponibles sur l'hôte en exécutant la commande "apt update" pour récupérer les dernières informations des paquets depuis les référentiels.
+
+    Installation des outils de sécurité courants : Cette tâche utilise le module "apt" pour installer plusieurs outils de sécurité, notamment Nmap, Nikto, Metasploit Framework, Wireshark et Tshark, sur l'hôte cible.
+
+    Exécution d'un test de vulnérabilité avec Nmap : Cette tâche exécute la commande shell "nmap" avec des options spécifiques pour effectuer un test de vulnérabilité sur l'hôte cible. Les résultats du test sont enregistrés dans le fichier "rapport_scan_nmap.txt".
+
+    Recherche des mots de passe incorrects dans le journal d'authentification : Cette tâche utilise la commande shell "grep" pour rechercher les lignes contenant le motif "authentication failure" dans le fichier de journal d'authentification "/var/log/auth.log". Les résultats sont enregistrés dans le fichier "auth_failures.log".
+
+    Récupération des événements d'échec d'authentification : Cette tâche utilise le module "fetch" pour récupérer le fichier "auth_failures.log" depuis l'hôte distant vers le répertoire local.
+
+    Scan de vulnérabilité des applications web avec Nikto : Cette tâche exécute la commande shell "nikto" avec des options spécifiques pour effectuer un scan de vulnérabilité des applications web sur l'adresse IP spécifiée. Les résultats du scan sont enregistrés dans le fichier "rapport_scan_nikto.txt".
+
+    Récupération du fichier de journal Nmap : Cette tâche utilise le module "fetch" pour récupérer le fichier "rapport_scan_nmap.txt" depuis l'hôte distant vers le répertoire local.
+
+    Capture du trafic réseau avec Wireshark : Cette tâche utilise la commande shell "tcpdump" avec des options spécifiques pour capturer le trafic réseau pendant une minute. Les résultats sont enregistrés dans le fichier "rapport_wireshark.pcap".
+
+    Récupération du fichier de capture Wireshark : Cette tâche utilise le module "fetch" pour récupérer le fichier de capture "rapport_wireshark.pcap" depuis l'hôte distant vers le répertoire local.
+
+    Génération du rapport des vulnérabilités détectées via Wireshark : Cette tâche utilise la commande shell "tcpdump" avec des options spécifiques pour analyser le fichier de capture Wireshark et extraire les informations sur les vulnérabilités détectées. Les résultats sont enregistrés dans le fichier "rapport_vulns_wireshark.txt".
+
+    Récupération du fichier de journal Nikto : Cette tâche utilise le module "fetch" pour récupérer le fichier "rapport_scan_nikto.txt" depuis l'hôte distant vers le répertoire local.
+
+    Affichage du nombre de tentatives de mots de passe échoués : Cette tâche utilise la commande shell "grep" pour compter le nombre de tentatives de mots de passe échoués en recherchant le motif "authentication failure" dans le fichier de journal d'authentification. Le résultat est enregistré dans la variable "auth_failures_count".
+
+    Affichage du nombre de tentatives de mots de passe échoués : Cette tâche utilise le module "debug" pour afficher le nombre de tentatives de mots de passe échoués en utilisant la valeur de la variable "auth_failures_count.stdout".
+
+    Génération d'un rapport des événements d'échec d'authentification : Cette tâche utilise la commande shell "cat" pour ajouter le contenu du fichier "auth_failures.log" au fichier "rapport_auth_failures.txt".
+
+Utilisation
+
+Pour utiliser ce script, vous devez disposer d'Ansible installé sur votre machine. Vous pouvez exécuter le script en spécifiant l'hôte cible dans la section "hosts" et en exécutant la commande "ansible-playbook" suivi du nom du fichier contenant le script.
+
+Assurez-vous d'adapter les adresses IP et les chemins des fichiers de sortie selon vos besoins.
+
+Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) sur l'hôte cible, car il effectue des opérations système et accède à des journaux système sensibles.
+
 
 
  
