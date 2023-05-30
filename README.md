@@ -156,15 +156,25 @@ Nmap:
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/b19b7ac1-0f84-4b95-aded-416e6112fd29)
 
  L'hôte "ismahane" (192.168.10.133) est en ligne avec une latence très faible.
+ 
  Il y a 998 ports fermés qui n'ont pas été inclus dans le rapport.
+ 
  Les ports 22 (SSH) et 80 (HTTP) sont ouverts.
+ 
  Le service SSH utilise OpenSSH 8.9p1 sur Ubuntu Linux.
+ 
  Le service HTTP utilise nginx 1.18.0 sur Ubuntu.
+ 
  Le serveur Web prend en charge les méthodes GET et HEAD.
+ 
  Le titre de la page d'accueil est "Welcome to nginx!".
+ 
  Le système d'exploitation est Linux 2.6.X avec le noyau Linux 2.6.32.
+ 
  L'estimation de l'uptime est d'environ 43,501 jours.
+ 
  L'hôte est sur le même réseau (0 sauts de réseau).
+ 
  La prédiction des numéros de séquence TCP est considérée comme difficile (Difficulté=248).
 
 
@@ -175,11 +185,17 @@ Nikto:
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6b90031d-a2ed-4806-ba09-a1c8af183a4b)
 
  IP cible : 192.168.10.133
+ 
  Nom d'hôte cible : 192.168.10.133
+ 
  Port cible : 80
+ 
  Serveur : nginx/1.18.0 (Ubuntu)
+ 
  Vulnérabilités identifiées : Fuites d'inodes via ETags, absence de l'en-tête X-Frame-Options anti-clickjacking
+ 
  2 problèmes signalés sur 6544 éléments vérifiés
+ 
  Durée du scan : 132 secondes
     
     
