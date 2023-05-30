@@ -39,6 +39,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  Tout d'abord, il faut installer le serveur OpenSSH s'il n'est pas déjà installé avec la commande suivante: sudo apt install openssh-server -y
  Ensuite, vérifier si le service sshd est en cours d'exécusion via la commande suivante: sudo systemctl status sshd
  Maintenant, il faut créer un utilisateur ansible et lui autoriser l'accès sudo sans mot de passe.
+ 
  Pour créer l'utilisateur, on tape la commande suivante: sudo adduser --shell /bin/bash --gecos "" ansible
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2220fe1d-6948-4ec1-a38b-5d53a19bcb02)
@@ -151,7 +152,20 @@ Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) 
 
 ### Résultat de test du playbook:
 
-Nmap:
+On lance le playbook en utilisant la commande suivante: sudo ansible-playbook -i hosts testintrusion7.yml 
+
+
+
+
+
+
+
+
+
+
+
+
+##### Fihcier Nmap:
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/b19b7ac1-0f84-4b95-aded-416e6112fd29)
 
@@ -180,7 +194,7 @@ Nmap:
 
 
 
-Nikto:
+##### Fichier Nikto:
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6b90031d-a2ed-4806-ba09-a1c8af183a4b)
 
@@ -198,6 +212,13 @@ Nikto:
  
  Durée du scan : 132 secondes
     
+ ##### Fichier des évènements d'échec d'authentification:
+ 
+ Après 2 échecs d'authentification sur le hôte client, voici le résultat du test du playbook:
+ 
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/382b016b-859e-49ea-9862-8a3c79c89223)
+ 
+ 
     
     
 
