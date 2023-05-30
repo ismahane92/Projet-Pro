@@ -162,29 +162,29 @@ Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) 
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6b90031d-a2ed-4806-ba09-a1c8af183a4b)
 
-    Nikto v2.1.5 : Cela indique la version de Nikto utilisée pour le scan.
+ Nikto v2.1.5 : Cela indique la version de Nikto utilisée pour le scan.
 
-    Target IP : L'adresse IP du serveur cible qui a été scannée.
+ Target IP : L'adresse IP du serveur cible qui a été scannée.
 
-    Target Hostname : Le nom d'hôte du serveur cible qui a été scannée.
+ Target Hostname : Le nom d'hôte du serveur cible qui a été scannée.
 
-    Target Port : Le port sur lequel le scan a été effectué, dans ce cas, le port 80 généralement utilisé pour les connexions HTTP.
+ Target Port : Le port sur lequel le scan a été effectué, dans ce cas, le port 80 généralement utilisé pour les connexions HTTP.
 
-    Using Encoding : Cela indique la méthode d'encodage utilisée par Nikto lors de la requête vers le serveur. Dans ce cas, l'encodage prématuré de l'URL est utilisé.
+ Using Encoding : Cela indique la méthode d'encodage utilisée par Nikto lors de la requête vers le serveur. Dans ce cas, l'encodage prématuré de l'URL est utilisé.
 
-    Start Time : L'heure de début du scan.
+ Start Time : L'heure de début du scan.
 
-    Server : Cela indique le serveur web qui est en cours d'exécution sur le serveur cible. Dans ce cas, le serveur est "nginx/1.18.0 (Ubuntu)".
+ Server : Cela indique le serveur web qui est en cours d'exécution sur le serveur cible. Dans ce cas, le serveur est "nginx/1.18.0 (Ubuntu)".
 
-    Server leaks inodes via ETags : Cette ligne indique une vulnérabilité potentielle où le serveur divulgue des informations sensibles (inodes) à travers les ETags.       Les ETags sont des identifiants uniques associés aux fichiers sur le serveur.
+ Server leaks inodes via ETags : Cette ligne indique une vulnérabilité potentielle où le serveur divulgue des informations sensibles (inodes) à travers les ETags.       Les ETags sont des identifiants uniques associés aux fichiers sur le serveur.
 
-    The anti-clickjacking X-Frame-Options header is not present : Cela signifie que l'en-tête de sécurité X-Frame-Options, qui aide à prévenir les attaques de         
-    clickjacking, n'est pas présent sur le serveur.
+ The anti-clickjacking X-Frame-Options header is not present : Cela signifie que l'en-tête de sécurité X-Frame-Options, qui aide à prévenir les attaques de       
+ clickjacking, n'est pas présent sur le serveur.
 
-    6544 items checked: 0 error(s) and 2 item(s) reported on remote host : Cela indique que Nikto a vérifié un total de 6544 éléments sur le serveur cible et a trouvé 
-    2 problèmes.
+  6544 items checked: 0 error(s) and 2 item(s) reported on remote host : Cela indique que Nikto a vérifié un total de 6544 éléments sur le serveur cible et a trouvé 
+  2 problèmes.
 
-    End Time : L'heure de fin du scan.
+  End Time : L'heure de fin du scan.
     
     
     
