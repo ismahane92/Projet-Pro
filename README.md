@@ -84,7 +84,8 @@ Le code de ce fichier est présent sur le fichier "playbook.md"
 ### Scan de vulnérabilités
 
 Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
-Configuration
+
+#### Configuration
 
 Le script utilise Ansible pour gérer la configuration et l'exécution des tâches. La section "hosts" spécifie l'hôte cible sur lequel les scans seront effectués. La propriété "become" est définie sur "true" pour exécuter les tâches en tant que superutilisateur (root) afin d'accéder aux ressources système nécessaires.
 
@@ -122,7 +123,7 @@ Le script utilise Ansible pour gérer la configuration et l'exécution des tâch
 
     Génération d'un rapport des événements d'échec d'authentification : Cette tâche utilise la commande shell "cat" pour ajouter le contenu du fichier "auth_failures.log" au fichier "rapport_auth_failures.txt".
 
-Utilisation
+#### Utilisation
 
 Pour utiliser ce script, vous devez disposer d'Ansible installé sur votre machine. Vous pouvez exécuter le script en spécifiant l'hôte cible dans la section "hosts" et en exécutant la commande "ansible-playbook" suivi du nom du fichier contenant le script.
 
