@@ -79,6 +79,7 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 
 
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
+Le code de ce fichier est présent sur le fichier "playbook.md"
 
 
 
