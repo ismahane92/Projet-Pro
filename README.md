@@ -123,7 +123,7 @@ Affichage du nombre de tentatives de mots de passe échoués : Cette tâche util
 
 Génération d'un rapport des événements d'échec d'authentification : Cette tâche utilise la commande shell "cat" pour ajouter le contenu du fichier "auth_failures.log" au fichier "rapport_auth_failures.txt".
 
-#### Utilisation
+### Utilisation
 
 Pour utiliser ce script, vous devez disposer d'Ansible installé sur votre machine. Vous pouvez exécuter le script en spécifiant l'hôte cible dans la section "hosts" et en exécutant la commande "ansible-playbook" suivi du nom du fichier contenant le script.
 
