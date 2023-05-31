@@ -142,7 +142,7 @@ Cette tâche utilise le module "fetch" pour récupérer le fichier "rapport_scan
 Cette tâche utilise la commande shell "grep" pour compter le nombre de tentatives de mots de passe échoués en recherchant le motif "authentication failure" dans le fichier de journal d'authentification. Le résultat est enregistré dans la variable "auth_failures_count".
 
 ##### Affichage du nombre de tentatives de mots de passe échoués : 
-Cette tâche utilise le module "debug" pour afficher le nombre de tentatives de mots de passe échoués en utilisant la valeur de la variable "auth_failures_count.stdout".
+Cette tâche utilise le module "debug" pour afficher le nombre de tentatives de mots de passe échoués en utilisant la valeur de la variable "auth_failures_count.stdout". ceci permet aux administrateurs réseaux d'avoir un indice d'informations si jamais il y a eu une attaque par brute force ou tentativie d'intrusion par une personne malveillante (utilsateur non légimitime).
 
 ##### Génération d'un rapport des événements d'échec d'authentification :
  Cette tâche utilise la commande shell "cat" pour ajouter le contenu du fichier "auth_failures.log" au fichier "rapport_auth_failures.txt".
