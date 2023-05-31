@@ -34,7 +34,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  
  Pour générer la clé SSH, on va taper cette commande sur Kali: ssh-keygen et on appuye sur Entrée jusqu'à ce que la clé soit générée.
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/9f23f1da-3683-4f34-89b9-97fe9db8e908)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/8febe33b-bd3a-4774-93bf-2a58e7ad34fa)
  
  
 ## Configuration de l'hôte Ubuntu pour l'automatisation Ubuntu:
