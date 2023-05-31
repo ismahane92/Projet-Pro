@@ -52,6 +52,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/76b4b42f-470c-4b1d-b690-193bb48f23b7)
  
  Copier la clé publique SSH sur l'hôte Ansible (Kali):
+ 
  À partir de l'ordinateur sur lequel on a installé Ansible (Kali), on copie la clé publique SSH sur le client Ubuntu comme suit: ssh-copy-id ansible@192.168.10.133 L'adresse IP 192.168.10.133 étant l'IP de mon client Ubuntu.
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/89df2a4e-e9f5-40cc-9613-51ac0b724c0f)
@@ -168,7 +169,7 @@ On lance le playbook en utilisant la commande suivante: sudo ansible-playbook -i
 
 
 
-
+Les fichiers suivants se crééent automatiqument dans le répertoire "project" 
 ##### Fihcier Nmap:
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/b19b7ac1-0f84-4b95-aded-416e6112fd29)
