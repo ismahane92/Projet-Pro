@@ -20,7 +20,8 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
  Commande pour vérifier la version de ansible: ansible --version
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef9039fd-2549-4bb2-9734-948e7ebc91fc)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2dada4aa-1ba5-49b1-a680-c71c00f144e0)
+
  
  
 ## Configuration de Kali:
@@ -45,22 +46,24 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  
  Pour créer l'utilisateur, on tape la commande suivante: sudo adduser --shell /bin/bash --gecos "" ansible
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2220fe1d-6948-4ec1-a38b-5d53a19bcb02)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ca33bd74-4135-43e7-80b8-0152f118516d)
  
  pour autoriser l'accès sudo sans mot de passe à l’utilisateur ansible, modifiez-le fichier /etc/sudoers avec la commande suivante: sudo visudo
  ajoutez la ligne suivante au fichier /etc/sudoers et enregistrez: ansible ALL=(ALL) NOPASSWD:ALL
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/76b4b42f-470c-4b1d-b690-193bb48f23b7)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6ad35978-6ca3-42eb-9ef6-79d0053be906)
  
  Copier la clé publique SSH sur l'hôte Ansible (Kali):
  
  À partir de l'ordinateur sur lequel on a installé Ansible (Kali), on copie la clé publique SSH sur le client Ubuntu comme suit: ssh-copy-id ansible@192.168.10.133 L'adresse IP 192.168.10.133 étant l'IP de mon client Ubuntu.
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/89df2a4e-e9f5-40cc-9613-51ac0b724c0f)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ce8e2b09-5aa7-413d-a744-2e04f3f15e00)
+
  
  On doit maintenant pouvoir accéder en SSH à l'hôte client en tant qu'utilisateur ansible sans aucun mot de passe, comme vous pouvez le voir sur la capture d'écran ci-dessous:
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/874b5a05-4b88-4605-b114-a50706f500a8)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/faabb85a-ca84-4276-87c1-bea7d5f59e70)
+
  
  ## Création du playbook:
  
