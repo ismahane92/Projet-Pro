@@ -1,4 +1,4 @@
-- name: Scan de vulnérabilités
+- name: Scan de vulnérabilités et d'erreurs de configuration
   hosts: Client1
   become: true
   tasks:
@@ -19,11 +19,16 @@
       apt:
         name: ['nmap', 'nikto', 'metasploit-framework', 'wireshark', 'tshark']
 
-    - name: Exécution d'un test de vulnérabilité
+    - name: Exécution d'un test de vulnérabilité avec Nmap
       shell: nmap -sS -T4 -A -v -Pn > rapport_scan_nmap.txt {{ ansible_host }}
 
+    - name: Récupération du fichier de rapport Nmap
+      fetch:
+        src: /home/ansible/rapport_scan_nmap.txt
+        dest: ./nmap.log
+
     - name: Recherche des mots de passe incorrects dans le journal d'authentification
-      shell: grep -iE 'authentication failure' /var/log/auth.log > auth_failures.log || true
+      shell: grep -iE 'Failed password|authentication failure' /var/log/auth.log > auth_failures.log || true
       changed_when: false
 
     - name: Récupération des événements d'échec d'authentification
@@ -31,46 +36,72 @@
         src: /home/ansible/auth_failures.log
         dest: ./auth_failures.log
 
-    - name: Scan de vulnérabilité des applications web
-      shell: nikto -h 192.168.10.133 -evasion 3 -Cgidirs /cgi-bin,/scripts > rapport_scan_nikto.txt {{ ansible_host }}
+    - name: Scan de vulnérabilités des applications web avec Nikto
+      shell: nikto -h {{ ansible_host }} -evasion 3 -Cgidirs /cgi-bin,/scripts > rapport_scan_nikto.txt
+      args:
+        executable: /bin/bash
 
-    - name: Récupération du fichier de journal nmap
+    - name: Récupération du fichier de rapport Nikto
       fetch:
-        src: /home/ansible/rapport_scan_nmap.txt
-        dest: ./nmap.log
+        src: /home/ansible/rapport_scan_nikto.txt
+        dest: ./nikto.log
+
+    - name: Exécution d'un test de vulnérabilité avec Metasploit
+      shell: msfconsole -x "db_connect -y /usr/share/metasploit-framework/config/database.yml; workspace -a ansible; hosts -R; vulns -R; exit" > rapport_scan_metasploit.txt
+      args:
+        executable: /bin/bash
+
+    - name: Récupération du fichier de rapport Metasploit
+      fetch:
+        src: /home/ansible/rapport_scan_metasploit.txt
+        dest: ./metasploit.log
 
     - name: Capture du trafic réseau avec Wireshark
-      become: true
       shell: tcpdump -i ens33 -G 60 -W 1 -w rapport_wireshark.pcap
       args:
-      executable: /bin/bash
+        executable: /bin/bash
 
     - name: Récupération du fichier de capture Wireshark
       fetch:
         src: /home/ansible/rapport_wireshark.pcap
         dest: ./wireshark.pcap
 
-    - name: Génération du rapport des vulnérabilités détectées via Wireshark
-      shell: tcpdump -r ./wireshark.pcap -Y "ssl.handshake.type==1 && ssl.handshake.certificate_length>0" -T fields -e ssl.handshake.extensions_server_name > rapport_vulns_wireshark.txt
-      args:
-        executable: /bin/bash
-
-    - name: Récupération du fichier de journal nikto
-      fetch:
-        src: /home/ansible/rapport_scan_nikto.txt
-        dest: ./nikto.log
-
-    - name: Affichage du nombre de tentatives de mots de passe échoués
-      shell: "grep -icE 'authentication failure' /var/log/auth.log"
-      register: auth_failures_count
+    - name: Génération du rapport des vulnérabilités détectées via Metasploit
+      shell: cat /home/ansible/rapport_scan_metasploit.txt
+      register: metasploit_report
       changed_when: false
 
-    - name: Affichage du nombre de tentatives de mots de passe échoués
-      debug:
-        msg: "Nombre de tentatives de mots de passe échoués : {{ auth_failures_count.stdout }}"
+    - name: Génération du rapport des vulnérabilités détectées via Nmap
+      shell: cat ./rapport_scan_nmap.txt
+      register: nmap_report
+      changed_when: false
 
-    - name: Génération d'un rapport des événements d'échec d'authentification
-      shell: cat ./auth_failures.log >> rapport_auth_failures.txt
-      args:
-        executable: /bin/bash
+    - name: Génération du rapport des vulnérabilités détectées via Nikto
+      shell: cat ./rapport_scan_nikto.txt
+      register: nikto_report
+      changed_when: false
+
+    - name: Génération du rapport des erreurs d'authentification
+      shell: cat /home/ansible/auth_failures.log
+      register: auth_failures_report
+      changed_when: false
+
+    - name: Affichage du rapport des vulnérabilités et des erreurs de configuration
+      debug:
+        msg: |
+          Rapport des vulnérabilités détectées via Metasploit:
+          {{ metasploit_report.stdout }}
+
+
+          Rapport des vulnérabilités détectées via Nmap:
+          {{ nmap_report.stdout }}
+
+          Rapport des vulnérabilités détectées via Nikto:
+          {{ nikto_report.stdout }}
+
+          Rapport des erreurs d'authentification:
+          {{ auth_failures_report.stdout }}
+
+
+
  
