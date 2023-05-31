@@ -64,6 +64,17 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/faabb85a-ca84-4276-87c1-bea7d5f59e70)
 
+Afin de pouvoir utiliser les outils installés, il faudra autoriser les droits tcpdump sur le hôte distant en tapant les commandes suivantes:
+
+sudo groupadd pcap
+
+sudo usermod -a -G pcap $USER
+
+sudo chgrp pcap /usr/bin/tcpdump
+
+sudo chmod 750 /usr/bin/tcpdump
+
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
  
  ## Création du playbook:
  
@@ -93,71 +104,47 @@ Le code de ce fichier est présent sur le fichier "playbook.yml"
 
 ## Readme
 
-### Scan de vulnérabilités
+### Scan de vulnérabilités et d'erreurs de configuration
 
-Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
+Ce code représente un script d'automatisation pour effectuer un scan de vulnérabilités et détecter les erreurs de configuration sur un hôte distant. Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto et Metasploit.
 
-#### Configuration
+#### Prérequis
+Avant d'exécuter ce script, assurez-vous d'avoir les éléments suivants :
+- Un hôte distant accessible avec l'adresse IP spécifiée dans la variable `ansible_host`.
+- Ansible installé sur la machine exécutant le script.
 
-Le script utilise Ansible pour gérer la configuration et l'exécution des tâches. La section "hosts" spécifie l'hôte cible sur lequel les scans seront effectués. La propriété "become" est définie sur "true" pour exécuter les tâches en tant que superutilisateur (root) afin d'accéder aux ressources système nécessaires.
+#### Description des tâches
 
-#### Tâches
+1. Ajout de la clé GPG du référentiel Metasploit et ajout du référentiel Metasploit à partir de la source spécifiée.
+2. Mise à jour de la liste des paquets disponibles sur l'hôte distant.
+3. Installation des outils de sécurité courants (Nmap, Nikto, Metasploit, Wireshark, tshark) sur l'hôte distant.
+4. Exécution d'un test de vulnérabilité avec Nmap et enregistrement du rapport dans `rapport_scan_nmap.txt`.
+5. Récupération du fichier de rapport Nmap depuis l'hôte distant.
+6. Recherche des mots de passe incorrects et des échecs d'authentification dans le journal d'authentification de l'hôte distant et enregistrement des résultats dans `auth_failures.log`.
+7. Récupération des événements d'échec d'authentification depuis l'hôte distant.
+8. Scan de vulnérabilités des applications web avec Nikto et enregistrement du rapport dans `rapport_scan_nikto.txt`.
+9. Récupération du fichier de rapport Nikto depuis l'hôte distant.
+10. Exécution d'un test de vulnérabilité avec Metasploit et enregistrement du rapport dans `rapport_scan_metasploit.txt`.
+11. Récupération du fichier de rapport Metasploit depuis l'hôte distant.
+12. Capture du trafic réseau avec Wireshark pendant 60 secondes et enregistrement dans `rapport_wireshark.pcap`.
+13. Récupération du fichier de capture Wireshark depuis l'hôte distant.
+14. Génération du rapport des vulnérabilités détectées via Metasploit.
+15. Génération du rapport des vulnérabilités détectées via Nmap.
+16. Génération du rapport des vulnérabilités détectées via Nikto.
+17. Génération du rapport des erreurs d'authentification.
+18. Affichage du rapport des vulnérabilités et des erreurs de configuration.
 
-##### Ajout de la clé GPG du référentiel Metasploit : 
-Cette tâche ajoute la clé GPG du référentiel Metasploit au système pour permettre la vérification des paquets provenant de ce référentiel.
+##### Utilisation
+1. Assurez-vous que l'hôte distant est accessible et que vous avez les droits nécessaires pour exécuter les tâches en tant que superutilisateur (root).
+2. Modifiez le fichier d'inventaire Ansible pour spécifier l'hôte distant dans la section `hosts`.
+3. Exécutez le script à l'aide de la commande `ansible-playbook` en spécifiant le chemin vers le fichier contenant le code.
 
-##### Ajout du référentiel Metasploit :
-Cette tâche ajoute le référentiel Metasploit à la liste des sources de paquets du système. Il spécifie le lien vers le référentiel et son état "présent" pour s'assurer qu'il est activé.
+##### Remarques
+- Ce script utilise des commandes shell pour exécuter les différentes tâches. Assurez-vous que les outils requis sont installés sur l'hôte distant.
+- Les résultats des différentes analyses et des erreurs d'authentification sont enregistrés dans des fichers de rapport pour une consultation ultérieure.
+- Les rapports générés sont affichés à la fin de l'exécution du script grâce à la tâche debug.
 
-##### Mise à jour de la liste des paquets disponibles :
-Cette tâche met à jour la liste des paquets disponibles sur l'hôte en exécutant la commande "apt update" pour récupérer les dernières informations des paquets depuis les référentiels.
 
-##### Installation des outils de sécurité courants :
-Cette tâche utilise le module "apt" pour installer plusieurs outils de sécurité, notamment Nmap, Nikto, Metasploit Framework, Wireshark et Tshark, sur l'hôte cible.
-
-##### Exécution d'un test de vulnérabilité avec Nmap :
-Cette tâche exécute la commande shell "nmap" avec des options spécifiques pour effectuer un test de vulnérabilité sur l'hôte cible. Les résultats du test sont enregistrés dans le fichier "rapport_scan_nmap.txt".
-
-##### Recherche des mots de passe incorrects dans le journal d'authentification :
-Cette tâche utilise la commande shell "grep" pour rechercher les lignes contenant le motif "authentication failure" dans le fichier de journal d'authentification "/var/log/auth.log". Les résultats sont enregistrés dans le fichier "auth_failures.log".
-
-##### Récupération des événements d'échec d'authentification :
-Cette tâche utilise le module "fetch" pour récupérer le fichier "auth_failures.log" depuis l'hôte distant vers le répertoire local.
-
-##### Scan de vulnérabilité des applications web avec Nikto : 
-Cette tâche exécute la commande shell "nikto" avec des options spécifiques pour effectuer un scan de vulnérabilité des applications web sur l'adresse IP spécifiée. Les résultats du scan sont enregistrés dans le fichier "rapport_scan_nikto.txt".
-
-##### Récupération du fichier de journal Nmap :
-Cette tâche utilise le module "fetch" pour récupérer le fichier "rapport_scan_nmap.txt" depuis l'hôte distant vers le répertoire local.
-
-##### Capture du trafic réseau avec Wireshark : 
-Cette tâche utilise la commande shell "tcpdump" avec des options spécifiques pour capturer le trafic réseau pendant une minute. Les résultats sont enregistrés dans le fichier "rapport_wireshark.pcap".
-
-##### Récupération du fichier de capture Wireshark :
-Cette tâche utilise le module "fetch" pour récupérer le fichier de capture "rapport_wireshark.pcap" depuis l'hôte distant vers le répertoire local.
-
-##### Génération du rapport des vulnérabilités détectées via Wireshark :
-Cette tâche utilise la commande shell "tcpdump" avec des options spécifiques pour analyser le fichier de capture Wireshark et extraire les informations sur les vulnérabilités détectées. Les résultats sont enregistrés dans le fichier "rapport_vulns_wireshark.txt".
-
-##### Récupération du fichier de journal Nikto : 
-Cette tâche utilise le module "fetch" pour récupérer le fichier "rapport_scan_nikto.txt" depuis l'hôte distant vers le répertoire local.
-
-##### Affichage du nombre de tentatives de mots de passe échoués : 
-Cette tâche utilise la commande shell "grep" pour compter le nombre de tentatives de mots de passe échoués en recherchant le motif "authentication failure" dans le fichier de journal d'authentification. Le résultat est enregistré dans la variable "auth_failures_count".
-
-##### Affichage du nombre de tentatives de mots de passe échoués : 
-Cette tâche utilise le module "debug" pour afficher le nombre de tentatives de mots de passe échoués en utilisant la valeur de la variable "auth_failures_count.stdout". ceci permet aux administrateurs réseaux d'avoir un indice d'informations si jamais il y a eu une attaque par brute force ou tentativie d'intrusion par une personne malveillante (utilsateur non légimitime).
-
-##### Génération d'un rapport des événements d'échec d'authentification :
- Cette tâche utilise la commande shell "cat" pour ajouter le contenu du fichier "auth_failures.log" au fichier "rapport_auth_failures.txt".
-
-### Utilisation
-
-Pour utiliser ce script, vous devez disposer d'Ansible installé sur votre machine. Vous pouvez exécuter le script en spécifiant l'hôte cible dans la section "hosts" et en exécutant la commande "ansible-playbook" suivi du nom du fichier contenant le script.
-
-Assurez-vous d'adapter les adresses IP et les chemins des fichiers de sortie selon vos besoins.
-
-Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) sur l'hôte cible, car il effectue des opérations système et accède à des journaux système sensibles.
 
 ### Résultat de test du playbook:
 
@@ -189,8 +176,6 @@ Les fichiers suivants se crééent automatiqument dans le répertoire "project"
  L'hôte est sur le même réseau (0 sauts de réseau).
  
  La prédiction des numéros de séquence TCP est considérée comme difficile (Difficulté=248).
-
-
 
 
 ##### Fichier Nikto:
