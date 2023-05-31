@@ -84,6 +84,8 @@ Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on
 
 Le code de ce fichier est présent sur le fichier "playbook.yml"
 
+## Readme
+
 ### Scan de vulnérabilités
 
 Ce script automatisé est conçu pour effectuer un scan de vulnérabilités sur un hôte appelé "Client1". Il utilise plusieurs outils de sécurité courants tels que Nmap, Nikto, Metasploit Framework, Wireshark et Tshark pour effectuer différentes tâches de scan.
