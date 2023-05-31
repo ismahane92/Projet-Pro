@@ -71,20 +71,20 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
  
  Pour créer le répertoire "project", on tape la commande suivante:
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/7a1223e7-27b4-418c-9d0f-781ff7e786d4)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6426c275-0c80-4301-bb84-853193c67acd)
  
  Ensuite, on crée le fichier appelé "hosts" dans le même répertoire:
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/3e182454-518a-499f-b536-6720b2b1f51f)
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/7f815b1a-c5fe-457d-aab3-956743ad435a)
 
 Dans ce fichier, on définit l'adresse IP de l'hôte cible, ici 192.168.10.133:
 
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/65e768d3-5a28-47e2-abc1-fbc94a5e07b2)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/7cea9998-36f8-4b68-911d-f939c224c3aa)
 
 
 Afin de tester si ansible accède à l'hôte défini dans le fichier "hosts", on peut taper cette commande: ansible -i ./hosts all -m ping -u ansible
 
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef7b7a27-7164-47c8-ae25-83412b7a32da)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/283c0d38-025b-40dd-90c3-7f39d53d09c9)
 
 
 à cette étape, on crée notre playbook dans le répertoire "project" en utilisant cette commande: nano testintrusion.yml
@@ -163,20 +163,10 @@ Note : Ce script nécessite des privilèges d'administrateur (superutilisateur) 
 
 On lance le playbook en utilisant la commande suivante: sudo ansible-playbook -i hosts testintrusion7.yml 
 
-
-
-
-
-
-
-
-
-
-
 Les fichiers suivants se crééent automatiqument dans le répertoire "project" 
 ##### Fihcier Nmap:
 
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/b19b7ac1-0f84-4b95-aded-416e6112fd29)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/2d39ca04-3282-4f26-a89b-8295b748f0c6)
 
  L'hôte "ismahane" (192.168.10.133) est en ligne avec une latence très faible.
  
@@ -205,7 +195,7 @@ Les fichiers suivants se crééent automatiqument dans le répertoire "project"
 
 ##### Fichier Nikto:
 
-![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/6b90031d-a2ed-4806-ba09-a1c8af183a4b)
+![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/a19a0742-f9aa-4444-9b80-c91099ce979c)
 
  IP cible : 192.168.10.133
  
@@ -223,12 +213,10 @@ Les fichiers suivants se crééent automatiqument dans le répertoire "project"
     
  ##### Fichier des évènements d'échec d'authentification:
  
- Après 2 échecs d'authentification sur le hôte client, voici le résultat du test du playbook:
+ Après 3 échecs d'authentification sur le hôte client, voici le résultat du test du playbook:
  
- ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/382b016b-859e-49ea-9862-8a3c79c89223)
- 
- 
-    
+ ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/790c1cc4-364d-4030-9925-f6b3407c9f00)
+
     
 
 
