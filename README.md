@@ -14,7 +14,9 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
 ## Installation:
  Ansible (Management Node) sera installé sur une machine Kali comme indiqué ci-dessus. 
+ 
  Commande pour installer Ansible: sudo apt install ansible 
+
  Commande pour vérifier la version de ansible: ansible --version
  
  ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/ef9039fd-2549-4bb2-9734-948e7ebc91fc)
