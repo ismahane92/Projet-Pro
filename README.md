@@ -12,6 +12,7 @@ Un playbook Ansible est un fichier YAML qui définit une série de tâches à ef
 
 ![image](https://github.com/ismahane92/Projet-Pro/assets/134289075/84085634-77e3-40d2-8d79-a9dfe7f4c904)
 
+
 ## Installation:
  Ansible (Management Node) sera installé sur une machine Kali comme indiqué ci-dessus. 
  
